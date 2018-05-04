@@ -229,6 +229,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/JavaScript获取鼠标当前位置的三种方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MWL">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="马文龙的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/04/JavaScript获取鼠标当前位置的三种方法/" itemprop="url">JavaScript获取鼠标当前位置的三种方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T14:28:22+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript获取鼠标当前位置的三种方法"><a href="#JavaScript获取鼠标当前位置的三种方法" class="headerlink" title="JavaScript获取鼠标当前位置的三种方法"></a>JavaScript获取鼠标当前位置的三种方法</h1><p>在日常的网页操作中，常常会遇到鼠标交互的问题，可能会需要知道鼠标的坐标。以下提供了三种方法获取鼠标的坐标。<br>在这之前需要知道屏幕、浏览器窗口和文档的区别。</p>
+<h2 id="相对于屏幕的位置"><a href="#相对于屏幕的位置" class="headerlink" title="相对于屏幕的位置"></a>相对于屏幕的位置</h2><p>屏幕指的是电脑的显示器，有14-40+寸大小不等，浏览器窗口大小的变化、文档的上下滚动操作都不会改变鼠标相对于屏幕的位置。<br>需要着重强调的是event，<strong>event是一个声明了全局变量的一个对象，在chrome和IE下，可以随意访问。但Firefox下是没有event这个对象的！</strong><br>好消息是：在IE8，chrome下，是有event这个对象的！</p>
+<p>###<br>    function getMousePos(event) {     //event是一个声明了全局变量的一个对象<br>       var e = event || window.event;    //Firefox下是没有event这个对象的！！<br>       return {‘x’:e.screenX,’y’:screenY}<br>      }</p>
+<p>但是多数时间我们更想要的是相对于浏览器窗口的位置信息，我们可以用dom的clientX属性值获取。浏览器窗口大小的改变一般情况下也会改变我们所获取的位置信息。</p>
+<h2 id="相对于浏览器窗口的位置"><a href="#相对于浏览器窗口的位置" class="headerlink" title="相对于浏览器窗口的位置"></a>相对于浏览器窗口的位置</h2><p>###<br>    function getMousePos(event) {<br>       var e = event || window.event;<br>       return {‘x’:e.clientX,’y’:clientY}<br>     }<br>使用clientX属性值可以获取当前页面的位置，这忽略了页面滚动的因素，如果，我们需要知道当前相对于文档的位置，只需要在之前的位置信息加上浏览器窗口滚动的长度即可。<br>在除了IE6、7、8之外的浏览器，我们可以直接使用pageX属性值即可。</p>
+<h2 id="相对于文档的位置"><a href="#相对于文档的位置" class="headerlink" title="相对于文档的位置"></a>相对于文档的位置</h2><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><pre><code>function getMousePos(event) {
+  var e = event || window.event;
+  var scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
+  var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+  var x = e.pageX || e.clientX + scrollX;
+  var y = e.pageY || e.clientY + scrollY;
+  return { &apos;x&apos;: x, &apos;y&apos;: y };
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/23/我的第一篇博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,7 +515,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
